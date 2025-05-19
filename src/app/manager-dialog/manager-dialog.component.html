@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Select a New {{ data.currentEmployee.designation }}</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Search Employee</mat-label>
+    <input
+      matInput
+      [matAutocomplete]="auto"
+      [(ngModel)]="selectedEmployee"
+      (input)="filterEmployees($event)"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onEmployeeSelected($event.option.value)"
+    >
+      <mat-option *ngFor="let emp of filteredEmployees" [value]="emp">
+        {{ emp.name }} ({{ emp.email }})
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>

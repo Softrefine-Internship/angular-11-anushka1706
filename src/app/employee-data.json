@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "managerId": null,
+    "imageUrl": "../assets/users/albert-dera-ILip77SbmOE-unsplash.jpg",
+    "email": "john.doe@example.com",
+    "subordinates": [
+      2,
+      3
+    ],
+    "designation": "CEO"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "managerId": 1,
+    "imageUrl": "../assets/users/alexander-hipp-iEEBWgY_6lA-unsplash.jpg",
+    "email": "jane.smith@example.com",
+    "subordinates": [
+      4,
+      5
+    ],
+    "designation": "CTO"
+  },
+  {
+    "id": 3,
+    "name": "Bob Johnson",
+    "managerId": 1,
+    "imageUrl": "../assets/users/ali-morshedlou-WMD64tMfc4k-unsplash.jpg",
+    "email": "bob.johnson@example.com",
+    "subordinates": [
+      6
+    ],
+    "designation": "CFO"
+  },
+  {
+    "id": 4,
+    "name": "Alice Brown",
+    "managerId": 2,
+    "imageUrl": "../assets/users/christina-wocintechchat-com-0Zx1bDv5BNY-unsplash.jpg",
+    "email": "alice.brown@example.com",
+    "subordinates": [
+      8,
+      9
+    ],
+    "designation": "Engineering Manager"
+  },
+  {
+    "id": 5,
+    "name": "Charlie White",
+    "managerId": 2,
+    "imageUrl": "../assets/users/christopher-campbell-rDEOVtE7vOs-unsplash.jpg",
+    "email": "charlie.white@example.com",
+    "subordinates": [
+      10,
+      11
+    ],
+    "designation": "Product Manager"
+  },
+  {
+    "id": 6,
+    "name": "David Black",
+    "managerId": 3,
+    "imageUrl": "../assets/users/courtney-cook-TSZo17r3m0s-unsplash.jpg",
+    "email": "david.black@example.com",
+    "subordinates": [
+      7
+    ],
+    "designation": "Finance Manager"
+  },
+  {
+    "id": 7,
+    "name": "Eva Green",
+    "managerId": 6,
+    "imageUrl": "../assets/users/jurica-koletic-7YVZYZeITc8-unsplash.jpg",
+    "email": "eva.green@example.com",
+    "subordinates": null,
+    "designation": "Accountant"
+  },
+  {
+    "id": 8,
+    "name": "George Blue",
+    "managerId": 4,
+    "imageUrl": "https://via.placeholder.com/150",
+    "email": "george.blue@example.com",
+    "subordinates": null,
+    "designation": "Software Engineer"
+  },
+  {
+    "id": 9,
+    "name": "Helen Gray",
+    "managerId": 4,
+    "imageUrl": "https://via.placeholder.com/150",
+    "email": "helen.gray@example.com",
+    "subordinates": null,
+    "designation": "QA Engineer"
+  },
+  {
+    "id": 10,
+    "name": "Ian Yellow",
+    "managerId": 5,
+    "imageUrl": "https://via.placeholder.com/150",
+    "email": "ian.yellow@example.com",
+    "subordinates": null,
+    "designation": "UI/UX Designer"
+  },
+  {
+    "id": 11,
+    "name": "Jack Pink",
+    "managerId": 5,
+    "imageUrl": "https://via.placeholder.com/150",
+    "email": "jack.pink@example.com",
+    "subordinates": null,
+    "designation": "Business Analyst"
+  }
+]

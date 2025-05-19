@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Add Subordinate</h2>
+
+<mat-dialog-content *ngIf="canAdd; else limitReached">
+  <form>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="subordinate.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="subordinate.email" name="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Designation</mat-label>
+      <input matInput [(ngModel)]="subordinate.designation" name="designation" required>
+    </mat-form-field>
+
+<div class="full-width">
+  <label for="imageUpload">Upload Image</label>
+  <input type="file" id="imageUpload" (change)="onImageSelected($event)" accept="image/*">
+</div>
+  </form>
+</mat-dialog-content>
+
+<ng-template #limitReached>
+  <mat-dialog-content>
+    <p>This manager already has 5 subordinates. Cannot add more.</p>
+  </mat-dialog-content>
+</ng-template>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="!canAdd">Add</button>
+</mat-dialog-actions>

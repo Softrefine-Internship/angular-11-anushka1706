@@ -1,0 +1,51 @@
+<div class="employee-card" [class.highlight]="employee.showSubordinates">
+  <div class="top-container">
+    <img
+      [src]="employee.imageUrl"
+      width="80"
+      class="user-image"
+      alt="{{ employee.name }}"
+    />
+    <span
+      *ngIf="(employee.subordinates?.length ?? 0) > 0"
+      (click)="onChangeManager()"
+      class="material-symbols-outlined swap-icon icon-button"
+      >swap_horiz</span
+    >
+  </div>
+
+  <p class="name">{{ employee.name }} - {{ employee.designation }}</p>
+  <p class="info" *ngIf="employee.managerId">
+    Manager ID: {{ employee.managerId }}
+  </p>
+  <p class="info">Subordinates - {{ employee.subordinates?.length }}</p>
+
+  <div class="actions">
+    <button
+      mat-button
+      color="accent"
+      (click)="toggleSubordinates()"
+      class="action-btns"
+    >
+      {{ employee.showSubordinates ? "Hide" : "Show" }} Subordinates
+    </button>
+
+    <button
+      mat-button
+      color="warn"
+      (click)="onRemoveEmployee()"
+      class="action-btns"
+    >
+      Remove
+    </button>
+
+    <button
+      mat-button
+      color="primary"
+      (click)="onAddSubordinate()"
+      class="action-btns"
+    >
+      ➕
+    </button>
+  </div>
+</div>
