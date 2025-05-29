@@ -4,13 +4,13 @@ import { Employee } from '../employee.model';
 
 @Component({
   selector: 'app-manager-dialog',
-  templateUrl: './manager-dialog.component.html',
-  styleUrls: ['./manager-dialog.component.scss']
+  templateUrl: './change-manager-dialog.component.html',
+  styleUrls: ['./change-manager-dialog.component.scss']
 })
 export class ManagerDialogComponent {
   selectedEmployee: Employee | null = null;
   filteredEmployees: Employee[] = [];
-
+  optionSelected !: Employee
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { allEmployees: Employee[]; currentEmployee: Employee },
     private dialogRef: MatDialogRef<ManagerDialogComponent>
@@ -30,11 +30,15 @@ export class ManagerDialogComponent {
       );
     }
   }
-
-  onEmployeeSelected(employee: Employee): void {
-    this.dialogRef.close(employee);
+  displayEmployee(employee: any): string {
+    return employee ? employee.name : '';
   }
-
+  onEmployeeSelected(employee: Employee): void {
+    this.optionSelected = employee
+  }
+  onSave() {
+    this.dialogRef.close(this.optionSelected);
+  }
   closeDialog(): void {
     this.dialogRef.close();
   }

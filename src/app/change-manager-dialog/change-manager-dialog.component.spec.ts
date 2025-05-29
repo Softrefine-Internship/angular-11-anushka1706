@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManagerDialogComponent } from './manager-dialog.component';
+import { ManagerDialogComponent } from './change-manager-dialog.component';
 
 describe('ManagerDialogComponent', () => {
   let component: ManagerDialogComponent;

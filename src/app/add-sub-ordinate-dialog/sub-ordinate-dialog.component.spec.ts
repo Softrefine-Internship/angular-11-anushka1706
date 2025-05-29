@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubOrdinateDialogComponent } from './sub-ordinate-dialog.component';
+import { SubordinateDialogComponent } from './add-sub-ordinate-dialog.component';
 
 describe('SubOrdinateDialogComponent', () => {
-  let component: SubOrdinateDialogComponent;
-  let fixture: ComponentFixture<SubOrdinateDialogComponent>;
+  let component: SubordinateDialogComponent;
+  let fixture: ComponentFixture<SubordinateDialogComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SubOrdinateDialogComponent]
+      declarations: [SubordinateDialogComponent]
     });
-    fixture = TestBed.createComponent(SubOrdinateDialogComponent);
+    fixture = TestBed.createComponent(SubordinateDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

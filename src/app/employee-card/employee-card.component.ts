@@ -15,19 +15,24 @@ export class EmployeeCardComponent {
   @Output() remove = new EventEmitter<number>();
   @Output() changeManager = new EventEmitter<number>();
 
-  toggleSubordinates() {
+  toggleSubordinates(e: Event) {
+    e.preventDefault()
+    if (!this.employee.subordinates?.length) return;
     this.toggleSub.emit(this.employee.id);
   }
 
-  onAddSubordinate() {
+  onAddSubordinate(e: Event) {
+    e.stopPropagation()
     this.addSubordinate.emit(this.employee.id);
   }
 
-  onRemoveEmployee() {
+  onRemoveEmployee(e: Event) {
+    e.stopPropagation()
     this.remove.emit(this.employee.id);
   }
 
-  onChangeManager() {
+  onChangeManager(e: Event) {
+    e.stopPropagation()
     this.changeManager.emit(this.employee.id);
   }
 }

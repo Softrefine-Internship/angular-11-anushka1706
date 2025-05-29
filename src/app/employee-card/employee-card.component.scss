@@ -4,16 +4,12 @@
   object-fit: cover;
   border-radius: 50%;
 }
-.name {
+.name,.designation {
   font-size: 2rem;
   font-weight: 450;
 }
 .sub-heading {
   font-size: 1.4rem;
-}
-
-.action-btns {
-  font-weight: 500;
 }
 .swap-icon {
   align-self: flex-end;
@@ -21,15 +17,16 @@
   transition: color 0.2s;
   &:hover {
     cursor: pointer;
-    color: rgb(234, 87, 111);
+    color: rgba(0, 122, 204, 0.5);
   }
 }
 
 .top-container {
   display: flex;
   width: 100%;
-  align-items: start;
-  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  justify-content: start;
 }
 .action {
   display: flex;
@@ -37,39 +34,51 @@
 .employee-card {
   padding: 1rem;
   border-radius: 10px;
-  align-self: center;
   border: 2px solid rgb(70, 141, 167);
   min-width: 250px;
-  max-width: 250px;
-  flex: 1 1 150px;
-  flex-shrink: 1;
-  flex-grow: 0;
+  max-width: 300px;
   align-self: stretch;
-  flex-wrap: wrap;
-  // height: max-content;
-  position: relative;
-}
-.verticle-parent{
-  position: absolute;
-  left: 50%;
-  bottom: 0%;
-  height: 20px;
-  width: 3px;
-  background-color: black;
-}
-.horizontal-connector{
-  width: 100rem;
-  width: 3px;
-  position: absolute;
-  background-color:black;
+  transition: box-shadow 0.4s border 0.4s;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #54a6dd;
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.5);
+  }
 }
 .employee-card.highlight {
   border: 2px solid #54a6dd;
-  box-shadow: 0 0 15px rgba(0, 122, 204, 0.5); 
+  box-shadow: 0 0 15px rgba(0, 122, 204, 0.5);
   background-color: #f0f8ff;
   transition: all 0.3s ease;
 }
-.info{
-  font-size: 1.2rem;
+.info {
+  font-size: 1.5rem;
   margin-top: 1rem;
+}
+.change-manager-btn {
+  color: #2d83bc;
+  font-weight: 500;
+}
+.name,
+.designation {
+  max-width: 100%;
+}
+.image-wrapper {
+  width: 20%;
+}
+.info-wrapper {
+  margin-top: 2rem;
+}
+.actions {
+  margin-left: 0rem;
+  margin-top: 1rem;
+}
+.name-designation-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.designation {
+  color: rgb(93, 93, 93);
+  font-size: 1.5rem;
 }

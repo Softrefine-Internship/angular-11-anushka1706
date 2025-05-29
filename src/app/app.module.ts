@@ -9,10 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-import { ManagerDialogComponent } from './manager-dialog/manager-dialog.component';
+import { ManagerDialogComponent } from './change-manager-dialog/change-manager-dialog.component';
 import { FormsModule } from '@angular/forms';
-import { SubordinateDialogComponent } from './sub-ordinate-dialog/sub-ordinate-dialog.component';
-import { ComfirmDialogComponent } from './comfirm-dialog/comfirm-dialog.component';
+import { SubordinateDialogComponent } from './add-sub-ordinate-dialog/add-sub-ordinate-dialog.component';
+import { ComfirmDialogComponent } from './comfirm-delete-dialog/comfirm-delete-dialog.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 

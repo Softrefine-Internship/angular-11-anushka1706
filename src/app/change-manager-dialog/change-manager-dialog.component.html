@@ -1,17 +1,19 @@
 <h2 mat-dialog-title>Select a New <span class="designation">{{ data.currentEmployee.designation }}</span></h2>
 
-<mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Search Employee</mat-label>
+<mat-dialog-content class="custom-autocomplete">
+  <mat-form-field appearance="fill" class="custom-input">
+    <mat-label class="custom-label">Search Employee</mat-label>
     <input
       matInput
       [matAutocomplete]="auto"
       [(ngModel)]="selectedEmployee"
       (input)="filterEmployees($event)"
+      class="custom-input"
     />
     <mat-autocomplete
       #auto="matAutocomplete"
       (optionSelected)="onEmployeeSelected($event.option.value)"
+      [displayWith]="displayEmployee"
     >
       <mat-option *ngFor="let emp of filteredEmployees" [value]="emp">
         {{ emp.name }} ({{ emp.email }})
@@ -20,5 +22,6 @@
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
   <button mat-button (click)="closeDialog()">Cancel</button>
 </mat-dialog-actions>

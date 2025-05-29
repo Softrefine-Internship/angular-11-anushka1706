@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Add Subordinate</h2>
+
+<mat-dialog-content *ngIf="canAdd; else limitReached">
+  <form [formGroup]="subForm" class="form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label class="custom-label">Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="subForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label class="custom-label">Email</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error *ngIf="subForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label class="custom-label">Designation</mat-label>
+      <input matInput formControlName="designation" required />
+      <mat-error *ngIf="subForm.get('designation')?.hasError('required')">
+        Designation is required
+      </mat-error>
+    </mat-form-field>
+    <div class="full-width image-container">
+      <label for="imageUpload" class="custom-label">Upload Image</label>
+      <input
+        class="image-input"
+        type="file"
+        id="imageUpload"
+        accept="image/*"
+        formControlName="imageUrl"
+        [value]="subForm.get('imageUrl')?.value"
+      />
+    </div>
+  </form>
+</mat-dialog-content>
+
+<ng-template #limitReached>
+  <mat-dialog-content>
+    <p class="can-add-error">This manager already has 5 subordinates. Cannot add more.</p>
+  </mat-dialog-content>
+</ng-template>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="!subForm.valid || !canAdd"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

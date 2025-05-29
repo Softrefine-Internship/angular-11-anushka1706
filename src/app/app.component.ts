@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import employeeData from './employee-data.json';
 import { Employee } from './employee.model';
 import { MatDialog } from '@angular/material/dialog';
-import { SubordinateDialogComponent } from './sub-ordinate-dialog/sub-ordinate-dialog.component';
-import { ManagerDialogComponent } from './manager-dialog/manager-dialog.component';
+import { SubordinateDialogComponent } from './add-sub-ordinate-dialog/add-sub-ordinate-dialog.component';
+import { ManagerDialogComponent } from './change-manager-dialog/change-manager-dialog.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
-import { ComfirmDialogComponent } from './comfirm-dialog/comfirm-dialog.component';
+import { ComfirmDialogComponent } from './comfirm-delete-dialog/comfirm-delete-dialog.component';
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private _buildLevelRecursive(employee: Employee, level: number): void {
+   _buildLevelRecursive(employee: Employee, level: number): void {
     if (!this.levelMap[level]) {
       this.levelMap[level] = [];
     }
@@ -83,35 +83,6 @@ export class AppComponent implements OnInit {
     for (const sub of subordinates) {
       this._buildLevelRecursive(sub, level + 1);
     }
-  }
-
-  buildDisplayLevels() {
-    this.displayLevels = [];
-    const levelZero = this.employees.filter(e => e.managerId === null);
-    if (levelZero.length === 0) return;
-
-    this.displayLevels.push(levelZero);
-
-    let currentLevel = levelZero;
-
-    while (currentLevel.length > 0) {
-      const nextLevel: Employee[] = [];
-
-      for (const emp of currentLevel) {
-        if (emp.showSubordinates) {
-          const subs = this.employees.filter(e => e.managerId === emp.id);
-          nextLevel.push(...subs);
-        }
-      }
-
-      if (nextLevel.length > 0) {
-        this.displayLevels.push(nextLevel);
-        currentLevel = nextLevel;
-      } else {
-        break;
-      }
-    }
-    console.log(this.displayLevels)
   }
 
   onShowSubordinates(emp: Employee, levelIndex: number) {
@@ -129,6 +100,7 @@ export class AppComponent implements OnInit {
   }
   onAddSubordinate(manager: Employee, level: number) {
     const dialogRef = this.dialog.open(SubordinateDialogComponent, {
+      disableClose: true,
       data: { manager }
     });
 
@@ -140,15 +112,16 @@ export class AppComponent implements OnInit {
     });
   }
 
-  openManagerDialog(emp: Employee,level:number): void {
+  openManagerDialog(emp: Employee, level: number): void {
     const allEmployees: Employee[] = Object.values(this.levelMap)
-    .flat()
-    .filter(e => e.id !== emp.id); 
+      .flat()
+      .filter(e => e.id !== emp.id);
     const dialogRef = this.dialog.open(ManagerDialogComponent, {
       width: '400px',
+      disableClose: true,
       data: {
         currentEmployee: emp,
-        allEmployees:allEmployees
+        allEmployees: allEmployees
       }
     });
 
@@ -160,17 +133,6 @@ export class AppComponent implements OnInit {
   }
 
   onRemoveEmployee(emp: Employee, level: number): void {
-    const hasSubordinates = this.hasSubordinates(emp, level, this.levelMap);
-
-    if (hasSubordinates) {
-      this.dialog.open(ErrorDialogComponent, {
-        data: {
-          title: 'Action Not Allowed',
-          message: `${emp.name} cannot be removed because they have subordinates.`
-        }
-      });
-      return;
-    }
     const dialogRef = this.dialog.open(ComfirmDialogComponent, {
       data: {
         title: 'Confirm Removal',
