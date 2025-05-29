@@ -11,7 +11,7 @@ import { Employee } from '../employee.model';
 
 export class SubordinateDialogComponent implements OnInit {
   subForm!: FormGroup;
-
+  imageUrl !: string
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<SubordinateDialogComponent>,
@@ -40,7 +40,7 @@ export class SubordinateDialogComponent implements OnInit {
       name: formValue.name,
       email: formValue.email,
       designation: formValue.designation,
-      imageUrl: formValue.imageUrl,
+      imageUrl: this.imageUrl,
       managerId: this.data.manager.id,
       subordinates: []
     };
@@ -53,6 +53,7 @@ export class SubordinateDialogComponent implements OnInit {
 
   onImageSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
+    console.log(input)
     const file = input.files?.[0];
     if (file) {
       this.processImage(file);
@@ -62,9 +63,8 @@ export class SubordinateDialogComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = () => {
       const base64 = reader.result as string;
-      this.subForm.patchValue({ imageUrl: base64 });
+      this.imageUrl = base64
     };
     reader.readAsDataURL(file);
   }
-
 }

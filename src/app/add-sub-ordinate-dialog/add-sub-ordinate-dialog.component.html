@@ -32,8 +32,8 @@
         type="file"
         id="imageUpload"
         accept="image/*"
+        (change)="onImageSelected($event)"
         formControlName="imageUrl"
-        [value]="subForm.get('imageUrl')?.value"
       />
     </div>
   </form>
